@@ -18,23 +18,37 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<Message> getAll() {
-        return messageRepository.findAll();
+        List<Message> list = messageRepository.findAll();
+
+        return list;
+    }
+
+    @Override
+    public List<Message> getMessageChatId(long chatId) {
+        return messageRepository.findByChatId(chatId);
     }
 
     @Override
     public Message getById(long id) {
-        Message temp=messageRepository.getOne(id);
+        Message temp = messageRepository.getOne(id);
         Message temp2;
         return temp;
     }
 
     @Override
+    public Message getByIdCustom(long id) {
+        return messageRepository.findByIdCustom(id);
+    }
+
+    @Override
     public Message save(Message message) {
+
         return messageRepository.saveAndFlush(message);
     }
 
     @Override
     public void remove(long id) {
+
         messageRepository.deleteById(id);
     }
 }

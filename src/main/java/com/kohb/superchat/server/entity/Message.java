@@ -10,6 +10,7 @@ import java.util.Date;
 public class Message {
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;

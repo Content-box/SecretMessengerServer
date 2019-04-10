@@ -30,6 +30,13 @@ public class MessageController {
         return messageService.getById(messageId);
     }
 
+    @RequestMapping(value ="/messages_custom/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Message getMessageCustom(@PathVariable("id") long messageId) {
+
+        return messageService.getByIdCustom(messageId);
+    }
+
     @RequestMapping(value ="/messages", method = RequestMethod.POST)
     @ResponseBody
     public Message saveMessage(@RequestBody Message message) {
@@ -42,6 +49,13 @@ public class MessageController {
     public void deleteMessage(@PathVariable("id") long messageId) {
 
         messageService.remove(messageId);
+    }
+
+    @RequestMapping(value ="/messages_chat/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Message> getMessageFromChat(@PathVariable("id") long chatId) {
+
+        return messageService.getMessageChatId(chatId);
     }
 
 }
