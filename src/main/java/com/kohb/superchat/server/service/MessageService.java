@@ -9,7 +9,6 @@ public interface MessageService {
 
     List<Message> getAll();
     Message getById(long id);
-    Message getByIdCustom(long id);
     List<Message> getMessageChatId(long chatId);
     Message save(Message message);
     void remove(long id);

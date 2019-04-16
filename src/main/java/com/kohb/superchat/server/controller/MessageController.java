@@ -30,13 +30,6 @@ public class MessageController {
         return messageService.getById(messageId);
     }
 
-    @RequestMapping(value ="/messages_custom/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Message getMessageCustom(@PathVariable("id") long messageId) {
-
-        return messageService.getByIdCustom(messageId);
-    }
-
     @RequestMapping(value ="/messages", method = RequestMethod.POST)
     @ResponseBody
     public Message saveMessage(@RequestBody Message message) {
