@@ -11,40 +11,41 @@ import java.util.Optional;
 
 @RestController //все методы контроллера возвр только json
 //@RequestMapping("/messages")
+@RequestMapping("/*")
 public class MessageController {
 
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping(value ="/messages", method = RequestMethod.GET)
+    @RequestMapping(value ="messages", method = RequestMethod.GET)
     @ResponseBody
     public List<Message> getAllMessages(){
 
         return messageService.getAll();
     }
 
-    @RequestMapping(value ="/messages/{id}", method = RequestMethod.GET)
+    @RequestMapping(value ="messages/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Message getMessage(@PathVariable("id") long messageId) {
 
         return messageService.getById(messageId);
     }
 
-    @RequestMapping(value ="/messages", method = RequestMethod.POST)
+    @RequestMapping(value ="save_message", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public Message saveMessage(@RequestBody Message message) {
 
         return messageService.save(message);
     }
 
-    @RequestMapping(value ="/messages/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value ="messages/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public void deleteMessage(@PathVariable("id") long messageId) {
 
         messageService.remove(messageId);
     }
 
-    @RequestMapping(value ="/messages_chat/{id}", method = RequestMethod.GET)
+    @RequestMapping(value ="messages_chat/{id}", method = RequestMethod.GET)
     @ResponseBody
     public List<Message> getMessageFromChat(@PathVariable("id") long chatId) {
 
